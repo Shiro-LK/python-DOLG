@@ -1,11 +1,16 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+dolg/__pycache__
+exemple/__pycache__
 *.py[cod]
 *$py.class
-
+dolg.egg-info/
+dist/
+*.pt
+*.h5
 # C extensions
 *.so
-
+weights/
 # Distribution / packaging
 .Python
 build/
