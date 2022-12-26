@@ -34,7 +34,7 @@ depth = 50
 # for pytorch
 
 import torch
-from dolg.model_dolg_pt import DOLG, ResNet
+from dolg.dolg_model_pt import DOLG, ResNet
 
 backbone = ResNet(depth=depth, num_groups=1, width_per_group=64, bn_eps=1e-5, 
              bn_mom=0.1, trans_fun="bottleneck_transform")
@@ -49,7 +49,7 @@ print(output)
 # for tensorflow
 
 import tensorflow as tf
-from dolg.model_dolg_tf2 import DOLG, ResNet
+from dolg.dolg_model_tf2 import DOLG, ResNet
 
 
 backbone = ResNet(depth=depth, num_groups=1, width_per_group=64, bn_eps=1e-5, 
