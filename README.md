@@ -1,4 +1,4 @@
-# DOLG
+# DOLG in torch and tensorflow (TF2)
 
 Re-implementation (Non Official) of the paper DOLG: Single-Stage Image Retrieval with Deep Orthogonal Fusion of Local and Global Features accepted at ICCV 2021.
 [paper](https://arxiv.org/pdf/2108.02927.pdf)
