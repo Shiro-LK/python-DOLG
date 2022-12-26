@@ -10,7 +10,7 @@ def readme():
 
 setup(
     name='dolg',
-    version='0.1.1',    
+    version='0.1.3',    
     description='Re-implementation of DOLG paper in torch and tensorflow with converted checkpoints',
     author='Shiro-LK',
     author_email='shirosaki94@gmail.com',

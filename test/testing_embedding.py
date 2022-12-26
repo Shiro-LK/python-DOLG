@@ -49,3 +49,5 @@ if __name__ == "__main__":
     
     assert np.round(compute_similarity(sim1_tf.reshape(1,-1), sim1_pt.reshape(1,-1)), 2) == 1
     assert np.round(compute_similarity(sim2_tf.reshape(1,-1), sim2_pt.reshape(1,-1)), 2) == 1
+    
+    print("embedding similar between torch and tf!")

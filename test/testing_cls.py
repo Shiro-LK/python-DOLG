@@ -52,4 +52,5 @@ if __name__ == "__main__":
     similarity2 = np.concatenate([compute_similarity(output_pt_cls2[i].numpy().reshape(1,-1), output_tf_cls2[i].numpy().reshape(1,-1)) for i in range(len(output_pt_cls))])
     assert np.round(similarity.sum(), 2) == len(images_names)
     assert np.round(similarity2.sum(), 2)  == len(images_names)
+    print("output cls similar between torch and tf")
     
