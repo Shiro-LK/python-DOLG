@@ -28,7 +28,7 @@ To do some inference on single sample, you can use python script in examples/ fo
 ```
 import dolg
 import numpy as np
-from dolg.utils.extraction import process
+from dolg.utils.extraction import process_data
 
 depth = 50
 
@@ -42,7 +42,7 @@ backbone = ResNet(depth=depth, num_groups=1, width_per_group=64, bn_eps=1e-5,
              bn_mom=0.1, trans_fun="bottleneck_transform")
 model = DOLG(backbone, s4_dim=2048, s3_dim=1024, s2_dim=512, head_reduction_dim=512,
              with_ma=False, num_classes=None, pretrained=f"r{depth}")
-img = process("image.jpg", "", mode="pt").unsqueeze(0)
+img = process_data("image.jpg", "", mode="pt").unsqueeze(0)
 
 with torch.no_grad():
     output = model(img)
@@ -59,7 +59,7 @@ backbone = ResNet(depth=depth, num_groups=1, width_per_group=64, bn_eps=1e-5,
              bn_mom=0.1, trans_fun="bottleneck_transform", name="globalmodel")
 model = DOLG(backbone, s4_dim=2048, s3_dim=1024, s2_dim=512, head_reduction_dim=512,
              with_ma=False, num_classes=None, pretrained=f"r{depth}")
-img = process("image.jpg", "", mode="tf")
+img = process_data("image.jpg", "", mode="tf")
 img = np.expand_dims(img, axis=0)
 output = model.predict(img)
 print(output)
