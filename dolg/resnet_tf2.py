@@ -32,7 +32,7 @@ def adaptative_avg_pool2d(x, output_dim=1):
     stride = (shape[1]//output_dim[0], shape[2]//output_dim[1]) 
     
     h, w = shape[1]- (output_dim[0]-1) * stride[0],  shape[2] -(output_dim[1]-1)*stride[1]
-    return tf.nn.avg_pool2d(input=x, ksize=(h, w), strides=stride, padding="VALID" )
+    return tf.cast(tf.nn.avg_pool2d(input=x, ksize=(h, w), strides=stride, padding="VALID" ), x.dtype)
     
 class AdaptiveAvgPool2d(tf.keras.layers.Layer):
     def __init__(self, output_dim=1, **kwargs):
@@ -71,8 +71,8 @@ class GeneralizedMeanPooling(tf.keras.layers.Layer):
 
     def call(self, x):
         """ """
-        out = tf.math.pow(tf.clip_by_value(x, clip_value_min=self.eps, clip_value_max=x.dtype.max),  y=self.p)
-        return tf.math.pow(adaptative_avg_pool2d(out, self.output_size), 1. / self.p)
+        out = tf.math.pow(tf.clip_by_value(x, clip_value_min=self.eps, clip_value_max=x.dtype.max),  y=tf.cast(self.p,x.dtype))
+        return tf.math.pow(adaptative_avg_pool2d(out, self.output_size), tf.cast(1. / self.p, out.dtype))
     def __repr__(self):
         """ """
         return self.__class__.__name__ + '(' \

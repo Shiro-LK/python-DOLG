@@ -201,7 +201,7 @@ class Arcface(tf.keras.layers.Layer):
 
         target_logit = tf.gather(cos_theta, targets, axis=1, batch_dims=1)
 
-        sin_theta = tf.math.sqrt(1.0 - tf.math.pow(target_logit, 2))
+        sin_theta = tf.math.sqrt(1.0 - tf.math.pow(target_logit, tf.cast(2, target_logit.dtype)))
         cos_theta_m = target_logit * self.cos_m - sin_theta * self.sin_m  # cos(target+margin)
         mask = tf.greater(cos_theta , cos_theta_m)
         final_target_logit = tf.where(target_logit > self.threshold, cos_theta_m, target_logit - self.mm)
