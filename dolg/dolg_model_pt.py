@@ -17,7 +17,7 @@ class DOLG(nn.Module):
         self.pool_l= nn.AdaptiveAvgPool2d((1, 1)) 
         self.pool_g = GeneralizedMeanPoolingP(norm=3.0) 
         self.fc_t = nn.Linear(s4_dim, s3_dim, bias=True)
-        self.fc = nn.Linear(s4_dim, head_reduction_dim, bias=True)
+        self.fc = nn.Linear(s3_dim*2, head_reduction_dim, bias=True)
         self.globalmodel = backbone
         self.localmodel = SpatialAttention2d(s3_dim, act_fn='relu', with_aspp=with_ma)
         self.s4_dim, self.s3_dim, self.s2_dim = s4_dim, s3_dim, s2_dim
